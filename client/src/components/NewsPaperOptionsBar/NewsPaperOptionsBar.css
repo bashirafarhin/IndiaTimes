@@ -1,0 +1,67 @@
+.options-bar {
+  width: fit-content;
+  display: flex;
+  margin: 3rem auto;
+  gap: 5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+::-webkit-scrollbar-track {
+  background: #ccc;
+}
+
+.options-bar::-webkit-scrollbar {
+  height: 5px;
+}
+
+.options-bar::-webkit-scrollbar-thumb {
+  background-color: #9b9a9a;
+  border-radius: 4px;
+}
+
+.options-bar > div {
+  position: relative;
+  color: #333;
+  font-size: large;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.options-bar > div::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: #333;
+  transition: width 0.2s ease;
+}
+
+.options-bar > div:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.premium {
+  color: goldenrod !important;
+}
+
+.options-bar > div:not(:hover)::after {
+  width: 0;
+  left: 0%;
+  transition: width 0.2s ease, right 0.2s ease;
+}
+
+.underline {
+  border-bottom: 2px solid #333;
+}
+
+@media screen and (max-width: 770px) {
+  .options-bar {
+    width: 90vw;
+    margin: 3rem 1.5rem;
+  }
+}

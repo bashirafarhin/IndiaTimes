@@ -1,0 +1,48 @@
+.card {
+  max-width: 50vw;
+  background-color: #2f2e2a;
+  margin: 1rem;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, padding 0.3s ease;
+}
+
+.card:hover {
+  padding: 20px;
+  transform: scale(1.02);
+}
+
+
+.headline {
+  color: white;
+  margin: auto;
+}
+
+.description {
+  color: #a89259;
+}
+
+.button a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.arrow {
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin-left: 5px;
+  transform: translateX(-15px);
+}
+
+.card:hover .button .arrow {
+  opacity: 1;
+  transform: translateX(10px);
+}
+
+@media only screen and (max-width: 800px) {
+  .card {
+    max-width: 90vw;
+  }
+}

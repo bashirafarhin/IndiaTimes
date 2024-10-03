@@ -1,0 +1,62 @@
+.details-container {
+    width: 50%;
+    margin: auto;
+    margin-top: 3rem;
+    font-size: large;
+}
+
+.details-container >img {
+    margin: auto 1rem;
+}
+.details-container >div{
+    margin-top: 1rem;
+}
+
+label, .subscription >p {
+    color: gray;
+    font-weight: 600;
+}
+
+.subscription >p {
+    padding-right: 0.5rem;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+}
+
+p{
+    display: inline-block;
+}
+
+.details-container input {
+    padding: 0.5rem 0.5rem;
+}
+
+.button {
+    display: inline;
+    color: white;
+    background-color: black;
+    width: fit-content;
+    padding: 10px 1.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+
+input:focus {
+    outline: none;
+}
+
+.editable {
+    border: 2px solid gray;
+}
+
+.not-editable {
+    border: 2px solid black;
+}

@@ -1,0 +1,55 @@
+.premium-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  align-items: center;
+  background-color: #263238;
+  text-align: center;
+  color: rgb(250, 248, 248);
+}
+
+.premium-container-title {
+  background-color: #263238;
+  border-bottom: 2px solid white;
+  padding: 2rem 6rem;
+}
+
+.premium-price {
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+}
+
+.premium-features {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.premium-button {
+  color: white;
+  background-color: black;
+  width: fit-content;
+  padding: 10px 1.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.premium-button:hover {
+  opacity: 0.9;
+}
+
+.forward-arrow {
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin-left: 5px;
+  transform: translateX(-15px);
+  color: white;
+}
+
+.premium-button:hover .forward-arrow {
+  opacity: 1;
+  transform: translateX(10px);
+}

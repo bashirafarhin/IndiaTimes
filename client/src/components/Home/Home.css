@@ -1,0 +1,21 @@
+.loading-container {
+  margin: 10rem auto;
+  width: fit-content;
+}
+
+.container {
+  max-width: 85vw;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-top: 1px solid #2f2e2a;
+}
+
+.container .child:nth-child(odd) {
+  align-self: flex-start;
+}
+
+.container .child:nth-child(even) {
+  align-self: flex-end;
+}

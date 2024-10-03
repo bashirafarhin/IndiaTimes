@@ -1,0 +1,27 @@
+.feedback-container {
+  width: fit-content;
+  margin: 4rem auto;
+  font-size: larger;
+}
+
+.feedback-button {
+  color: white;
+  background-color: black;
+  width: fit-content;
+  padding: 10px 1.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.feedback-button:hover {
+  opacity: 0.9;
+}
+
+textarea {
+  width: 50vw;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  resize: vertical;
+}

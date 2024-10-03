@@ -1,0 +1,53 @@
+.header {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  padding-top: 1rem;
+}
+
+.logo {
+  font-family: "Cormorant Garamond", serif;
+  cursor: pointer;
+  margin: auto;
+}
+
+.logo > h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+.user-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-left: 40px;
+}
+
+.user-options > div {
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.premium-icon:hover > path {
+  fill: goldenrod;
+}
+
+.tagline {
+  width: fit-content;
+  color: gray;
+  margin: auto;
+  margin-top: 1rem;
+  font-size: large;
+}
+
+@media only screen and (max-width: 800px) {
+  .logo {
+    font-size: 1rem;
+  }
+  .tagline {
+    margin: 15px;
+  }
+}
