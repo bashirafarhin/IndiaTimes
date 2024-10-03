@@ -1,4 +1,4 @@
-# India Times - Real-Time News App
+# India Times - A Real Time News App
 
 ![Screenshot 2024-10-03 172431](https://github.com/user-attachments/assets/9af80e0f-4a6d-43a5-bb10-eca3df0d7ab5)
 
