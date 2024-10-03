@@ -2,7 +2,7 @@
   width: 15px;
   aspect-ratio: 1;
   border-radius: 50%;
-  animation: l5 1s infinite linear alternate;
+  animation: l5 0.5s infinite linear alternate;
 }
 @keyframes l5 {
   0% {
