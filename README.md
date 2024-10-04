@@ -60,3 +60,5 @@ India Times is a full-stack news application that aggregates real-time news from
    `npm run dev`
 5. Open your browser and go to:
    `http://localhost:3000`
+### LICENSE
+[MIT LICENSE](https://github.com/bashirafarhin/IndiaTimes/blob/main/LICENSE)
