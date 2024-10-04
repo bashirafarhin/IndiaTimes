@@ -65,4 +65,4 @@ India Times is a full-stack news application that aggregates real-time news from
 
 ### Demo
 
-https://github.com/user-attachments/assets/8b456588-5878-4cc7-99c0-ee4a5f30059e
+https://github.com/user-attachments/assets/c2846292-71d7-4d94-ada3-1bb884b853e6
