@@ -46,7 +46,6 @@ India Times is a full-stack news application that aggregates real-time news from
 - Razorpay (for payments)
 - Google Developer Console (for authentication)
 
-  
 ### Installation
 
 1. Clone the repository:
@@ -62,6 +61,7 @@ India Times is a full-stack news application that aggregates real-time news from
    `nodemon index.js`
 7. Open your browser and go to:
    `http://localhost:5173`
+   
 ### LICENSE
 [MIT LICENSE](https://github.com/bashirafarhin/IndiaTimes/blob/main/LICENSE)
 
