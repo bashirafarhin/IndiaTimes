@@ -61,7 +61,7 @@ India Times is a full-stack news application that aggregates real-time news from
 6. Run the server on new terminal:
    `nodemon index.js`
 7. Open your browser and go to:
-   `http://localhost:3000`
+   `http://localhost:5173`
 ### LICENSE
 [MIT LICENSE](https://github.com/bashirafarhin/IndiaTimes/blob/main/LICENSE)
 
