@@ -52,7 +52,7 @@ India Times is a full-stack news application that aggregates real-time news from
 1. Clone the repository:
    `git clone https://github.com/bashirafarhin/IndiaTimes.git`
 2. Install dependencies:
-   `cd indiatimes`
+   `cd IndiaTimes`
 3. Run the command `npm install` in both the client and server folders.
 4. Set up environment variables:
    A sample `SampleEnvFile.txt` file is provided in the repository for your reference. You should create your own `.env` file in both directory of the project and update it with your own credentials.
