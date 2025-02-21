@@ -1,22 +1,6 @@
-import { useEffect } from "react";
-import { isUserAuthenticated } from "../../service/api/auth";
 import "./Login.css";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      let res = await isUserAuthenticated();
-      if (res && res.data.authenticated) {
-        navigate(`/home/${res.data.userId}/ndtvnews`);
-      } else {
-        navigate(`/`);
-      }
-    };
-    fetchData();
-  }, []);
 
   const handleLoginUsingGoogle = () => {
     window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`, "_self");

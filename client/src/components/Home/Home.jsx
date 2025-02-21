@@ -1,22 +1,21 @@
 import { useContext, useEffect, useState } from "react";
 import "./Home.css";
-import LoadingAnimation from "../LoadingAnimation/LoadingAnimations";
-import { getNews } from "../../service/api/user";
+import Loader from "../Loader/Loader";
 import { useParams } from "react-router-dom";
 import { NewsContext } from "../../context/newsContext";
+import axios from "axios";
 import Card from "../Card/Card";
 
 const Home = () => {
   const { news, setNews } = useContext(NewsContext);
   const [isLoading, setIsLoading] = useState(true);
-
-  const { id, channel } = useParams();
+  const { channel } = useParams();
   const selectedChannel = channel || "ndtvnews";
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const response = await getNews(id, selectedChannel);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/news/${selectedChannel}`,{ withCredentials: true });
       if (response) {
         setNews((prevNews) => ({
           ...prevNews,
@@ -34,7 +33,7 @@ const Home = () => {
     <>
       {isLoading ? (
         <div className="loading-container">
-          <LoadingAnimation />
+          <Loader />
         </div>
       ) : (
         <>

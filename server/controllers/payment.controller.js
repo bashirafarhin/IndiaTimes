@@ -24,19 +24,8 @@ export const checkout = async (req, res) => {
 };
 
 export const paymentVerification = async (req, res) => {
-  const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
-    req.body;
-  if (!req.session || !req.isAuthenticated()) {
-    return res.status(401).json({ message: "Session expired" });
-  }
-  const userId = req.session.userId;
-  if (!userId) {
-    return res.status(400).json({
-      success: false,
-      message: "User not logged in",
-    });
-  }
-
+  const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
+  const userId = req.user.userId;
   const secret = process.env.RAZORPAY_SECRET_KEY;
   const generated_signature = crypto
     .createHmac("sha256", secret)

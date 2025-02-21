@@ -1,37 +1,18 @@
-import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getUserDetails } from "../../service/api/user";
-import { checkout, getKey } from "../../service/api/payment";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Subscription.css";
 import PricingBox from "./PricingBox/PricingBox";
 import PaymentPolicy from "./PaymentPolicy/PaymentPolicy";
+import { UserContext } from "../../context/userContext";
 
 const Subscription = () => {
-  const { id } = useParams();
+  const { user } = useContext(UserContext)
   const navigate = useNavigate();
-
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    subscription: false,
-  });
 
   const [fontSize, setFontSize] = useState("2rem");
   const amount = import.meta.env.VITE_PREMIUM_PRICE;
   const type = "premium";
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await getUserDetails(id);
-      if (res) {
-        const { name, email, subscription } = res.data;
-        setUser({ name, email, subscription });
-      } else {
-        alert("Error fetching details. please try again later");
-      }
-    };
-    fetchData();
-  }, []);
 
   const handleSubscriptionClick = async () => {
     if (user.subscription) {
@@ -41,12 +22,12 @@ const Subscription = () => {
       }, 600);
     } else {
       try {
-        const res = await getKey();
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/payment/getkey`,{ withCredentials: true});
         if (res) {
           const {
             data: { key },
           } = res;
-          const orderRes = await checkout(amount, type);
+          const orderRes = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/payment/checkout`,{ amount, type },{ withCredentials: true,});
           if (orderRes) {
             const {
               data: { order },
@@ -61,7 +42,7 @@ const Subscription = () => {
               order_id: order.id,
               callback_url: `${
                 import.meta.env.VITE_BACKEND_URL
-              }/api/paymentVerification`,
+              }/payment/paymentVerification`,
               prefill: {
                 name: user.name,
                 email: user.email,

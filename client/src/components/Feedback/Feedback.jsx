@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import axios from "axios";
 import "./Feedback.css";
-import { submitFeedbackOrQuery } from "../../service/api/user";
 
 const Feedback = () => {
-  const { id } = useParams();
 
   const [isSubmitted, setisSubmitted] = useState(false);
 
@@ -15,10 +13,12 @@ const Feedback = () => {
   };
 
   const handleClick = async () => {
-    let response = await submitFeedbackOrQuery(id, feedback);
-    !response
-      ? alert("Feedback not submitted. Please try again later.")
-      : setisSubmitted(true);
+    try {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/feedback`, { feedback },{ withCredentials: true });
+      setisSubmitted(true);
+    } catch (error) {
+      alert("An error occurred while submitting feedback. Please try again later.");
+    }
   };
 
   return (

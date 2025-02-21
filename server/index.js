@@ -7,13 +7,14 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 
 //routes
-import router from "./routes/auth.js";
-import paymentRouter from "./routes/payment.js";
-import userRouter from "./routes/user.js";
+import authRouter from "./routes/auth.route.js";
+import paymentRouter from "./routes/payment.route.js";
+import userRouter from "./routes/user.route.js";
+import newsRouter from "./routes/news.route.js";
 
 //connection and setUp
-import "./Database/connection.js";
-import passportSetup from "./passport.js";
+import connectToDB from "./Database/connection.js";
+connectToDB();
 
 env.config();
 const app = express();
@@ -23,7 +24,7 @@ const corsOption = {
   credentials: true,
 };
 
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 
 app.use(
   session({
@@ -37,8 +38,11 @@ app.use(
       ttl: 60 * 60 * 1,
     }),
     cookie: {
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      // secure: process.env.NODE_ENV === "production",
+      // sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+      // maxAge: 1000 * 60 * 60 * 1,
+      secure: false,
+      // sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
       maxAge: 1000 * 60 * 60 * 1,
     },
   })
@@ -52,8 +56,9 @@ app.use(bodyParser.json());
 
 //setting up routes
 app.use("/", userRouter);
-app.use("/auth", router);
-app.use("/api", paymentRouter);
+app.use("/news", newsRouter)
+app.use("/auth", authRouter);
+app.use("/payment", paymentRouter);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

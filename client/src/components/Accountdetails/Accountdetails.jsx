@@ -1,33 +1,20 @@
-import { useState, useEffect } from "react";
-import { updateUserdetails, getUserDetails } from "../../service/api/user";
+import { useState, useContext } from "react";
 import "./Accountdetails.css";
-import { useParams } from "react-router-dom";
+import axios from "axios";
+import { UserContext } from "../../context/userContext";
 
 const Accountdetails = () => {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    subscription: false,
+  const { user } = useContext(UserContext);
+  const [ updatedUser, setUpdatedUser] = useState({
+    name: user.name,
+    email: user.email,
+    subscription: user.subscription,
   });
-  const { id } = useParams();
   const [isReadOnly, setIsReadOnly] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await getUserDetails(id);
-      if (res) {
-        const { name, email, subscription } = res.data;
-        setUser({ name, email, subscription });
-      } else {
-        alert("Error fetching details. Please try again later.");
-      }
-    };
-    fetchData();
-  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setUser((prev) => ({
+    setUpdatedUser((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -37,10 +24,12 @@ const Accountdetails = () => {
     if (isReadOnly) {
       setIsReadOnly(false);
     } else {
-      let response = await updateUserdetails(id, user);
-      response
-        ? setIsReadOnly(true)
-        : alert("Failed to update profile. Please try again later.");
+      try {
+        await axios.put(`${import.meta.env.VITE_BACKEND_URL}/update-user`, updatedUser, { withCredentials: true });
+        setIsReadOnly(true)
+      } catch(err) {
+        console.log(err, "Error during Updatation of details of user");
+      }
     }
   };
 
@@ -56,18 +45,18 @@ const Accountdetails = () => {
           name="name"
           className={isReadOnly ? "editable" : "not-editable"}
           type="text"
-          value={user.name}
+          value={updatedUser.name}
           readOnly={isReadOnly}
           onChange={handleInputChange}
         />
       </div>
       <div className="detail">
         <label htmlFor="email">Email</label>
-        <input name="email" type="text" value={user.email} readOnly />
+        <input name="email" type="text" value={updatedUser.email} readOnly />
       </div>
       <div className="subscription">
         <p>Subscribed:</p>
-        {user.subscription ? "Yes" : "No"}
+        {updatedUser.subscription ? "Yes" : "No"}
       </div>
       <div onClick={handleButtonClick} className="button">
         {isReadOnly ? "Update" : "Save"}

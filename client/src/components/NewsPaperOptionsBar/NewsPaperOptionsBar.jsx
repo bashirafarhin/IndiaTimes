@@ -1,29 +1,18 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { isUserSubscribed } from "../../service/api/user";
+import { useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { UserContext } from "../../context/userContext";
 import "./NewsPaperOptionsBar.css";
 
 const NewsPaperOptionsBar = () => {
-  const { id } = useParams();
+  const { user } = useContext(UserContext);
 
   const navigate = useNavigate();
   const [isSelected, setIsSelected] = useState("ndtvnews");
-  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const handleClick = (channel) => {
     setIsSelected(channel);
-    navigate(`/home/${id}/${channel}`);
+    navigate(`/home/${channel}`);
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      let response = await isUserSubscribed(id);
-      if (response) {
-        setIsSubscribed(response.data.subscription);
-      }
-    };
-    fetchData();
-  }, []);
 
   const options = [
     { id: "ndtvnews", name: "NDTV" },
@@ -32,7 +21,7 @@ const NewsPaperOptionsBar = () => {
     { id: "hindustantimesnews", name: "Hindustan Times" },
   ];
 
-  if (isSubscribed) {
+  if (user.subscription) {
     options.push({
       id: "newyorktimesnews",
       name: "NewYork Times",
