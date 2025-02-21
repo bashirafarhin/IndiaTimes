@@ -4,7 +4,8 @@ env.config();
 
 const connectToDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URL);
+    const URI = process.env.MONGODB_URL || 'mongodb://localhost:27017/enews';
+    await mongoose.connect(URI);
     console.log("Connection created successfully with MongoDB");
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);

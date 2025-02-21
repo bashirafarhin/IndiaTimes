@@ -1,9 +1,11 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Accountdetails.css";
 import axios from "axios";
 import { UserContext } from "../../context/userContext";
 
 const Accountdetails = () => {
+  const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const [ updatedUser, setUpdatedUser] = useState({
     name: user.name,
@@ -34,7 +36,12 @@ const Accountdetails = () => {
   };
 
   const handleClickLogout = async () => {
-    window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, "_self");
+    try {
+      await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, { withCredentials: true });
+      navigate('/');
+    } catch (err) {
+      console.log(err, "Error during logout");
+    }
   };
 
   return (

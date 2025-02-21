@@ -9,16 +9,6 @@ import { lazy, Suspense } from "react";
 
 //pages
 import RootLayout from "./pages/RootLayout";
-// import HomeLayout from "./pages/HomeLayout";
-
-//components
-// import Login from "./components/Login/Login";
-// import Home from "./components/Home/Home";
-// import Subscription from "./components/Subscription/Subscription";
-// import Accountdetails from "./components/Accountdetails/Accountdetails";
-// import Paymentfailure from "./components/Paymentfailure/Paymentfailure";
-// import Paymentsuccess from "./components/Paymentsuccess/Paymentsuccess";
-// import Feedback from "./components/Feedback/Feedback";
 import NotFound from "./components/NotFound/NotFound";
 import { NewsContextProvider } from "./context/newsContext";
 import { UserContextProvider } from "./context/userContext";
@@ -38,7 +28,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        <Route index element={<Suspense fallback={<Loader />}><Login /></Suspense>} />
+        <Route index element={<Suspense fallback={<Loader />}><UserProtectedWrapper><Login /></UserProtectedWrapper></Suspense>} />
         <Route path="/home" element={<Suspense fallback={<Loader />}><UserProtectedWrapper><HomeLayout /></UserProtectedWrapper></Suspense>}>
           <Route path=":channel" element={<Suspense fallback={<Loader />}><Home /></Suspense>} />
           <Route path="account" element={<Suspense fallback={<Loader />}><Accountdetails /></Suspense>} />
