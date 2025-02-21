@@ -44,7 +44,7 @@ function App() {
           <Route path="account" element={<Suspense fallback={<Loader />}><Accountdetails /></Suspense>} />
           <Route path="feedback" element={<Suspense fallback={<Loader />}><Feedback /></Suspense>} />
         </Route>
-        <Route path="/pricing/:id" element={<Suspense fallback={<Loader />}><UserProtectedWrapper><Subscription /></UserProtectedWrapper></Suspense>} />
+        <Route path="/pricing" element={<Suspense fallback={<Loader />}><UserProtectedWrapper><Subscription /></UserProtectedWrapper></Suspense>} />
         <Route path="/paymentsuccess" element={<Suspense fallback={<Loader />}><Paymentsuccess /></Suspense>} />
         <Route path="/paymentfailure" element={<Suspense fallback={<Loader />}><Paymentfailure /></Suspense>} />
 

@@ -1,9 +1,8 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FeedbackIcon from "@mui/icons-material/Feedback";
 import "./Header.css";
 
 const Header = () => {
-  const { id } = useParams();
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
@@ -11,7 +10,7 @@ const Header = () => {
   };
 
   const handlePremiumClick = () => {
-    navigate(`/pricing/${id}`);
+    navigate(`/pricing`);
   };
 
   const handleAccountClick = () => {
