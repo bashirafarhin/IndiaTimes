@@ -1,7 +1,9 @@
-import { instance } from "../razorpayment.js";
-import crypto from "crypto";
 import PaymentInfo from "../Database/Models/payment.js";
 import User from "../Database/Models/users.js";
+import Razorpay from "razorpay";
+import crypto from "crypto";
+import env from "dotenv";
+env.config();
 
 export const checkout = async (req, res) => {
   var options = {
@@ -10,6 +12,10 @@ export const checkout = async (req, res) => {
   };
 
   try {
+    const instance = new Razorpay({
+      key_id: process.env.RAZORPAY_ID_KEY,
+      key_secret: process.env.RAZORPAY_SECRET_KEY,
+    });
     const order = await instance.orders.create(options);
     res.status(200).json({
       success: true,
