@@ -1,4 +1,4 @@
-import User from '../Database/Models/users.js'; // Import your User model
+import User from '../Database/Models/users.js';
 
 export const authMiddleware = async (req, res, next) => {
   if (!req.isAuthenticated()) {

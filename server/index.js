@@ -36,6 +36,8 @@ app.use(
       dbName: process.env.DATABASE_NAME,
       collectionName: process.env.COLLECTION_NAME,
       ttl: 60 * 60 * 1,
+      autoRemove: 'interval',
+      autoRemoveInterval: 10
     }),
     cookie: {
       maxAge: 1000 * 60 * 60 * 1,

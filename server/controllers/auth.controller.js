@@ -6,30 +6,24 @@ env.config();
 
 export const logout = (req, res, next) => {
   if (!req.logout) {
-    return res
-      .status(500)
-      .json({ message: "Logout function not found on the request object" });
+    return res.status(500).json({ message: "Logout function not found on the request object" });
   }
   req.logout((error) => {
     if (error) {
-      return res
-        .status(500)
-        .json({ message: "Logout failed", error: error.message });
+      return res.status(500).json({ message: "Logout failed", error: error.message });
     }
     req.session.destroy((err) => {
       if (err) {
-        return res.status(500).json({ message: "Logout failed" });
+        return res.status(500).json({ message: "Session destroy failed" });
       }
-      // res.clearCookie("connect.sid");
-      res.status(200).json({ message: "Logout successful" });
+      res.clearCookie("connect.sid");
+      return res.status(200).json({ message: "Logout successful" });
     });
   });
 };
 
 export const loginSuccess = async(req, res) => {
-  return res
-    .status(200)
-    .json({ message: "Authentication Successfull", user : req.user });
+  return res.status(200).json({ message: "Authentication Successfull", user : req.user });
 };
 
 export const loginFailure = (req, res) => {
