@@ -13,14 +13,10 @@ const UserProtectedWrapper = ({ children }) => {
         if (!user) {  // Only fetch user if not already in context
           const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/login/success`,{ withCredentials: true }
           );
-
-          if (res.status === 200) {
-            setUser(res.data.user);
-          } else {
-            navigate("/");
-          }
+          setUser(res.data.user);
         }
       } catch (error) {
+        console.error(error);
         navigate("/");
       }
     };

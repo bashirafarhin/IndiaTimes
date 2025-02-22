@@ -1,6 +1,22 @@
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Login.css";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/login/success`,{ withCredentials: true });
+        navigate("/home/ndtvnews");
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleLoginUsingGoogle = () => {
     window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`, "_self");

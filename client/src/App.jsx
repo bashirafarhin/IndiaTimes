@@ -28,7 +28,7 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        <Route index element={<Suspense fallback={<Loader />}><UserProtectedWrapper><Login /></UserProtectedWrapper></Suspense>} />
+        <Route index element={<Suspense fallback={<Loader />}><Login /></Suspense>} />
         <Route path="/home" element={<Suspense fallback={<Loader />}><UserProtectedWrapper><HomeLayout /></UserProtectedWrapper></Suspense>}>
           <Route path=":channel" element={<Suspense fallback={<Loader />}><Home /></Suspense>} />
           <Route path="account" element={<Suspense fallback={<Loader />}><Accountdetails /></Suspense>} />

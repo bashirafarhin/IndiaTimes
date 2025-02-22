@@ -30,7 +30,7 @@ const Accountdetails = () => {
         await axios.put(`${import.meta.env.VITE_BACKEND_URL}/update-user`, updatedUser, { withCredentials: true });
         setIsReadOnly(true)
       } catch(err) {
-        console.log(err, "Error during Updatation of details of user");
+        console.log(err);
       }
     }
   };
@@ -40,7 +40,7 @@ const Accountdetails = () => {
       await axios.get(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, { withCredentials: true });
       navigate('/');
     } catch (err) {
-      console.log(err, "Error during logout");
+      console.log(err);
     }
   };
 
