@@ -33,10 +33,9 @@ export const paymentVerification = async (req, res) => {
     .digest("hex");
   if (generated_signature === razorpay_signature) {
     try {
-      await updateUserPaymentStatus(userId, {
+      await userPaymentStatus(userId, {
         razorpay_payment_id: razorpay_payment_id,
         razorpay_order_id: razorpay_order_id,
-        status: "successful",
       });
       res.redirect(
         `${process.env.FRONTEND_URL}/paymentsuccess?reference=${razorpay_payment_id}`
@@ -49,21 +48,13 @@ export const paymentVerification = async (req, res) => {
   }
 };
 
-export const updateUserPaymentStatus = async (userId, paymentInfo) => {
+export const userPaymentStatus = async (userId, paymentInfo) => {
   try {
-    let payment = await PaymentInfo.findOne({ userId });
-    if (!payment) {
-      payment = new PaymentInfo({
+      const payment = new PaymentInfo({
         userId,
-        status: paymentInfo.status,
         razorpay_payment_id: paymentInfo.razorpay_payment_id,
         razorpay_order_id: paymentInfo.razorpay_order_id,
       });
-    } else {
-      payment.status = paymentInfo.status;
-      payment.razorpay_payment_id = paymentInfo.razorpay_payment_id;
-      payment.razorpay_order_id = paymentInfo.razorpay_order_id;
-    }
     await User.findOneAndUpdate({ userId: userId }, { subscription: true });
     await payment.save();
   } catch (error) {
