@@ -4,6 +4,9 @@
 
 India Times is a full-stack news application that aggregates real-time news from various trusted sources, including [NDTV](https://www.ndtv.com/), [BBC](https://www.bbc.com/), [Hindustan Times](https://www.hindustantimes.com/), and [The New York Times](https://www.nytimes.com/international/). It provides users with instant access to the latest news updates, ensuring they are always informed about current events.
 
+### Demo
+https://github.com/user-attachments/assets/c2846292-71d7-4d94-ada3-1bb884b853e6
+
 ## Features
 
 - **Real-Time News Aggregation**: India Times collects data from major news websites using web scraping to bring you the latest updates instantly.
@@ -64,7 +67,3 @@ India Times is a full-stack news application that aggregates real-time news from
    
 ### LICENSE
 [MIT LICENSE](https://github.com/bashirafarhin/IndiaTimes/blob/main/LICENSE)
-
-### Demo
-
-https://github.com/user-attachments/assets/c2846292-71d7-4d94-ada3-1bb884b853e6
