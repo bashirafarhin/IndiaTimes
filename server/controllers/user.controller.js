@@ -1,10 +1,6 @@
 import User from "../Database/Models/users.js";
 import Feedback from "../Database/Models/feedback.js";
 
-// export const getUserProfile = async (req, res) => {
-//     return res.status(200).json({ user : req.user });
-// };
-
 export const updateUserProfile = async (req, res) => {
     try {
       const updatedFields = req.body;
